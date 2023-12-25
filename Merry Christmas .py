@@ -34,7 +34,7 @@ master_oshos.speed(2)
 canvas = master_oshos.getscreen()
 
 # Set background color and title
-canvas.bgcolor("darkblue")
+canvas.bgcolor("Black")
 canvas.title("Festive Greetings")
 
 canvas.setup(width=3.0, height=3.0)
@@ -51,14 +51,15 @@ while tree_width > 20:
     tree_width -= 20
     tree_height = 15
     x_position = 0 - tree_width/2
-    draw_rectangle(master_oshos, "darkgreen", x_position, y_position, tree_width, tree_height)
+    draw_rectangle(master_oshos, "green", x_position, y_position, tree_width, tree_height)
     y_position += tree_height
 
 # Draw a star on top of the tree
+tree_top_y = y_position + 25
 master_oshos.speed(1)
 master_oshos.penup()
 master_oshos.color('gold')
-master_oshos.goto(-25, y_position+15)
+master_oshos.goto(-25, tree_top_y)
 master_oshos.begin_fill()
 master_oshos.pendown()
 for i in range(5):
@@ -69,7 +70,7 @@ master_oshos.end_fill()
 # Decorate the tree with colorful ornaments
 ornament_positions = [(20, 80, "silver", 12), (-50, 40, "purple", 18),
                       (40, 0, "pink", 12), (95, -90, "darkgreen", 22),
-                      (-40, -50, "lightblue", 18), (-120, -110, "gold", 25)]
+                      (-40, -50, "red", 18), (-120, -110, "gold", 25)]
 for x, y, color, size in ornament_positions:
     master_oshos.penup()
     master_oshos.goto(x, y)
@@ -89,7 +90,7 @@ master_oshos.speed(10)
 number_of_stars = randint(15,25)
 for _ in range(number_of_stars):
     x_star = randint(-(canvas.window_width()//2), canvas.window_width()//2)
-    y_star = randint(tree_top_y, canvas.window_height()//2)
+    y_star = randint(tree_top_y, canvas.window_height()//2)  
     star_size = randint(3,15)
     master_oshos.penup()
     master_oshos.color('white')
@@ -105,12 +106,12 @@ for _ in range(number_of_stars):
 master_oshos.speed(1)
 master_oshos.penup()
 
-messages = [("🎄🎄🎄🎄🎄🎄🎄🎄🎄🎄🎄🎄🎄", -220, "red", 30),
-            ("HAPPY HOLIDAYS FROM MR OSHOS", -320, "gold", 45)]
+messages = [("🎄🎄🎄🎄🎄🎄🎄🎄🎄🎄🎄🎄🎄", -220, "green", 30),
+            ("MERRY CHRISTMAS MY LOVELY FAMILY 🥰", -320, "gold", 35)]
 for msg, y, color, font_size in messages:
     master_oshos.goto(0, y)
     master_oshos.color(color)
-    master_oshos.write(msg, move=False, align="center", font=("Arial", font_size, "bold"))
+    master_oshos.write(msg, move=False, align="center", font=("Lucida Handwriting", font_size, "italic"))
 
 master_oshos.hideturtle()
 canvas.mainloop()
